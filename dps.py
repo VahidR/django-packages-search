@@ -46,6 +46,8 @@ def process_package(package):
 	print 'Description: ', data.get('repo_description')
 	print 'PyPI URL: ', data.get('pypi_url')
 	print 'Repository URL: ', data.get('repo_url')
+	print 'PyPI downloads: ', data.get('pypi_downloads')
+	print 'Last modified: ', data.get('modified')[:10]
 
 
 
