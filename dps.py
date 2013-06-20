@@ -24,7 +24,7 @@ import optparse
 def process_grid(package_list):
 	'''
 	Function `process_grid` is responsible for representing the relevant list.
-	It gets the name of the grid and returns the the packages within that grid. 
+	It gets the name of the grid and returns the packages within that grid. 
 	'''
 	url = 'https://www.djangopackages.com/api/v1/grid/' + package_list
 	response = requests.get(url)
@@ -36,7 +36,7 @@ def process_grid(package_list):
 
 def process_package(package):
 	'''
-	Function `process_package` is gets the package name as the input and 
+	Function `process_package` gets the package name as the input and 
 	returns some useful information about the founded package.
 	'''
 	url = 'https://www.djangopackages.com/api/v1/package/' + package
