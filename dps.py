@@ -53,8 +53,8 @@ def process_package(package):
 
 if __name__ == '__main__':
 	parser = optparse.OptionParser()
-	parser.add_option('-l', '--list', dest='grid')
-	parser.add_option('-p', '--package', dest='package')
+	parser.add_option('-l', '--list', dest='grid', help='listing packages among the favorite list')
+	parser.add_option('-p', '--package', dest='package', help='getting the required information about the package')
 	options, args = parser.parse_args()
 	if options.grid:
 		try:
