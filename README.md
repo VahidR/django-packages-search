@@ -7,16 +7,16 @@ Introduction
 ------------
 Imagine that you are in the middle of a project, and would like to search for a third-party django app that suits your
 current need. You live in Terminal and do all of your stuff within your favorite editor like Vim or Emacs. 
-one way to search for such apps is ro fire your web browser and visit `djangopackages.com` and browse the packages 
+one way to search for such apps is to fire your web browser and visit `djangopackages.com` and browse the packages 
 comprehensively. Another way is using this tool. You can search for a *list* of packages within a certain area like
 `cms` and `profiles`, or you can get the vital information about a *specific* package. The details come later.
-This tool is under active development and lots of improvements will be added gradually..
+This tool is under active development and lots of improvements could be added gradually..
 
 
 How to use it
 -------------
-So far so good.. Let's imagine that we would like to see what packages are available in a *grid* of `profiles`. 
-We have heard that there is a package called `django-profiles`, but want to see all of the apps that people created.
+Let's imagine that we would like to see what packages are available in a *grid* of `profiles`. 
+We have heard that there is a package called `django-profiles`, but we want to see all of the apps that people has created.
 Within the terminal, enter this :
 ```bash
 $ python dps.py -l profiles
@@ -38,7 +38,7 @@ idios
 pinax
 ```
 
-Now, let's get some information about one of the those packages:
+Now, let's get some information about one of those packages:
 
 ```bash
 $ python dps.py -p django-userena
