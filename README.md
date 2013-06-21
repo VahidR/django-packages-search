@@ -10,7 +10,7 @@ current need. You live in Terminal and do all of your stuff within your favorite
 one way to search for such apps is to fire your web browser and visit `djangopackages.com` and browse the packages 
 comprehensively. Another way is using this tool. You can search for a *list* of packages within a certain area like
 `cms` and `profiles`, or you can get the vital information about a *specific* package. The details come later.
-This tool is under active development and lots of improvements could be added gradually..
+This tool is under active development and lots of improvements could be added gradually.
 
 
 How to use it
