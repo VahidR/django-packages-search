@@ -12,8 +12,6 @@ comprehensively. Another way is using this tool. You can search for a *list* of 
 `cms` and `profiles`, or you can get the vital information about a *specific* package. The details come later.
 This tool is under active development and lots of improvements will be added gradually..
 
-Installation
-------------
 
 How to use it
 -------------
