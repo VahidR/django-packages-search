@@ -1,4 +1,4 @@
-django-package-search
+django-packages-search
 =====================
 
 A command line tool for searching within djangopackages.com
