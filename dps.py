@@ -30,6 +30,7 @@ def process_grid(package_list):
 	response = requests.get(url)
 	data = simplejson.loads(response.content)
 	
+	print 'Here is the list of packages: '
 	for item in data.get('packages'):
 		print item.rsplit('/', 2)[1]
 
@@ -42,12 +43,14 @@ def process_package(package):
 	url = 'https://www.djangopackages.com/api/v1/package/' + package
 	response = requests.get(url)
 	data = simplejson.loads(response.content)
-	print 'Package: \t', data.get('title')
-	print 'Description: \t', data.get('repo_description')
-	print 'PyPI URL: \t', data.get('pypi_url')
-	print 'Repository URL: ', data.get('repo_url')
-	print 'PyPI downloads: ', data.get('pypi_downloads')
-	print 'Last modified: ', data.get('modified')[:10]
+	print 'Here is the detailed info about the package: '
+	print 'Name: \t\t\t', data.get('title')
+	print 'Description: \t\t', data.get('repo_description')
+	print 'PyPI URL: \t\t', data.get('pypi_url')
+	print 'Repository URL: \t', data.get('repo_url')
+	print 'Repository forks: \t', data.get('repo_forks')
+	print 'Repository watchers:\t', data.get('repo_watchers')
+	print 'Last modified: \t\t', data.get('modified')[:10]
 
 
 
