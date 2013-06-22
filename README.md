@@ -47,7 +47,7 @@ $ python dps.py --package=django-userena
 Here is the result for such searching:
 ```bash
 Here is the detailed info about the package: 
-Name: 			django-userena
+Name: 			            django-userena
 Description:            Accounts for Django made beautifully simple
 PyPI URL:               http://pypi.python.org/pypi/django-userena/
 Repository URLRL:       https://github.com/bread-and-pepper/django-userena
