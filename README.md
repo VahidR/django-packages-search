@@ -24,7 +24,8 @@ or
 $ python dps.py --list=profiles
 ```
 Oh... we have lots of apps:
-```
+```bash
+Here is the list of packages: 
 django-easy-profiles
 django-modeltranslation
 django-primate
@@ -37,9 +38,7 @@ django-userprofiles
 idios
 pinax
 ```
-
 Now, let's get some information about one of those packages:
-
 ```bash
 $ python dps.py -p django-userena
 or
@@ -47,10 +46,12 @@ $ python dps.py --package=django-userena
 ```
 Here is the result for such searching:
 ```bash
-Package:      django-userena
-Description: 	Accounts for Django made beautifully simple
-PyPI URL: 	  http://pypi.python.org/pypi/django-userena/
-Repository URL:  https://github.com/bread-and-pepper/django-userena
-PyPI downloads:  27525
-Last modified:  2013-06-21
+Here is the detailed info about the package: 
+Name: 			django-userena
+Description: Accounts for Django made beautifully simple
+PyPI URL: http://pypi.python.org/pypi/django-userena/
+Repository URLRL: https://github.com/bread-and-pepper/django-userena
+Repository forks: 246
+Repository watchers:721
+Last modified: 2013-06-21
 ```
