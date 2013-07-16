@@ -19,6 +19,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import requests
 import simplejson
 import optparse
+import sys
+
+import pprint
+
+def grid_list():
+	'''
+	Function `grid_list` is responsible for getting the main list of Grid names. 
+	OBS. Apparently there is a bug in the main API that leads to fetching a partial list.
+	I have opened an isue, and still waiting for a proper answer!
+	Don't use this particular function until further notice..
+	'''
+	url = 'https://www.djangopackages.com/api/v1/grid/'
+	response = requests.get(url)
+	data = simplejson.loads(response.content)
+	grids = [item.get('absolute_url') for item in data.get('objects')]
+	for grid_item in grids:
+		print grid_item.rsplit('/', 2)[1]
 
 
 def process_grid(package_list):
@@ -55,19 +72,29 @@ def process_package(package):
 
 
 if __name__ == '__main__':
-	parser = optparse.OptionParser()
+	
+	help_message = "usage: python dps.py [options] arg"
+	parser = optparse.OptionParser(help_message)
 	parser.add_option('-l', '--list', dest='grid', help='listing packages among the favorite list')
 	parser.add_option('-p', '--package', dest='package', help='getting the required information about the package')
 	options, args = parser.parse_args()
+	
 	if options.grid:
 		try:
 			process_grid(options.grid)
 		except:
 			print "Sorry! I can't find such a list"
+	
 	if options.package:
 		try:
 			process_package(options.package)
 		except:
 			print "Sorry! I can't find this package.."
-
+	
+	
+	try:
+		if sys.argv[1] and sys.argv[1] == 'galaxy':
+			grid_list()
+	except:
+		print help_message
 
