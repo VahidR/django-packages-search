@@ -55,3 +55,7 @@ Repository forks:       246
 Repository watchers:    721
 Last modified:          2013-06-21
 ```
+
+TODO
+----
+* making it as a stand alone django app
