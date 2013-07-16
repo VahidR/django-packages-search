@@ -21,7 +21,6 @@ import simplejson
 import optparse
 import sys
 
-import pprint
 
 def grid_list():
 	'''
