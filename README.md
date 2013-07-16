@@ -50,7 +50,7 @@ Here is the detailed info about the package:
 Name: 			        django-userena
 Description:            Accounts for Django made beautifully simple
 PyPI URL:               http://pypi.python.org/pypi/django-userena/
-Repository URLRL:       https://github.com/bread-and-pepper/django-userena
+Repository URL:         https://github.com/bread-and-pepper/django-userena
 Repository forks:       246
 Repository watchers:    721
 Last modified:          2013-06-21
