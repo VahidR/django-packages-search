@@ -25,7 +25,7 @@ import sys
 
 class DPS(object):
 	'''
-	Class `DPS` is the main main logic with the relevant behaviours. 
+	Class `DPS` is the main logic with some relevant methods. 
 	'''
 
 	def __init__(self):
