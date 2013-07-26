@@ -24,56 +24,62 @@ import sys
 
 
 class DPS(object):
+	'''
+	Class `DPS` is the main main logic with the relevant behaviours. 
+	'''
 
 	def __init__(self):
 		self._url = 'https://www.djangopackages.com/api/v1/'
+		self._response = ''
+		self._data = ''
+		self._grids = ''
 		
 
 	def grid_list(self):
 		'''
-		Function `grid_list` is responsible for getting the main list of Grid names. 
+		Method `grid_list` is responsible for getting the main list of Grid names. 
 		OBS. Apparently there is a bug in the main API that leads to fetching a partial list.
 		I have opened an isue, and still waiting for a proper answer!
 		Don't use this particular function until further notice..
 		'''
-		self.url = self._url +  'grid/'
-		self.response = requests.get(self.url)
-		self.data = simplejson.loads(self.response.content)
-		self.grids = [item.get('absolute_url') for item in self.data.get('objects')]
-		for grid_item in self.grids:
+		self._url = self._url +  'grid/'
+		self._response = requests.get(self._url)
+		self._data = simplejson.loads(self._response.content)
+		self._grids = [item.get('absolute_url') for item in self._data.get('objects')]
+		for grid_item in self._grids:
 			print grid_item.rsplit('/', 2)[1]
 
 
 	def process_grid(self, package_list):
 		'''
-		Function `process_grid` is responsible for representing the relevant list.
+		Method `process_grid` is responsible for representing the relevant list.
 		It gets the name of the grid and returns the packages within that grid. 
 		'''
-		self.url =  self._url + 'grid/' + package_list
-		self.response = requests.get(self.url)
-		self.data = simplejson.loads(self.response.content)
+		self._url =  self._url + 'grid/' + package_list
+		self._response = requests.get(self._url)
+		self._data = simplejson.loads(self._response.content)
 		
 		print 'Here is the list of packages: '
-		for item in self.data.get('packages'):
+		for item in self._data.get('packages'):
 			print item.rsplit('/', 2)[1]
 
 
 	def process_package(self, package):
 		'''
-		Function `process_package` gets the package name as the input and 
+		Method `process_package` gets the package name as the input and 
 		returns some useful information about the founded package.
 		'''
-		self.url = self._url + 'package/' + package
-		self.response = requests.get(self.url)
-		self.data = simplejson.loads(self.response.content)
+		self._url = self._url + 'package/' + package
+		self._response = requests.get(self._url)
+		self._data = simplejson.loads(self._response.content)
 		print 'Here is the detailed info about the package: '
-		print 'Name: \t\t\t', self.data.get('title')
-		print 'Description: \t\t', self.data.get('repo_description')
-		print 'PyPI URL: \t\t', self.data.get('pypi_url')
-		print 'Repository URL: \t', self.data.get('repo_url')
-		print 'Repository forks: \t', self.data.get('repo_forks')
-		print 'Repository watchers:\t', self.data.get('repo_watchers')
-		print 'Last modified: \t\t', self.data.get('modified')[:10]
+		print 'Name: \t\t\t', self._data.get('title')
+		print 'Description: \t\t', self._data.get('repo_description')
+		print 'PyPI URL: \t\t', self._data.get('pypi_url')
+		print 'Repository URL: \t', self._data.get('repo_url')
+		print 'Repository forks: \t', self._data.get('repo_forks')
+		print 'Repository watchers:\t', self._data.get('repo_watchers')
+		print 'Last modified: \t\t', self._data.get('modified')[:10]
 
 
 
