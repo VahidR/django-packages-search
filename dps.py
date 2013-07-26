@@ -16,57 +16,64 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+
 import requests
 import simplejson
 import optparse
 import sys
 
 
-def grid_list():
-	'''
-	Function `grid_list` is responsible for getting the main list of Grid names. 
-	OBS. Apparently there is a bug in the main API that leads to fetching a partial list.
-	I have opened an isue, and still waiting for a proper answer!
-	Don't use this particular function until further notice..
-	'''
-	url = 'https://www.djangopackages.com/api/v1/grid/'
-	response = requests.get(url)
-	data = simplejson.loads(response.content)
-	grids = [item.get('absolute_url') for item in data.get('objects')]
-	for grid_item in grids:
-		print grid_item.rsplit('/', 2)[1]
+class DPS(object):
+
+	def __init__(self):
+		self._url = 'https://www.djangopackages.com/api/v1/'
+		
+
+	def grid_list(self):
+		'''
+		Function `grid_list` is responsible for getting the main list of Grid names. 
+		OBS. Apparently there is a bug in the main API that leads to fetching a partial list.
+		I have opened an isue, and still waiting for a proper answer!
+		Don't use this particular function until further notice..
+		'''
+		self.url = self._url +  'grid/'
+		self.response = requests.get(self.url)
+		self.data = simplejson.loads(self.response.content)
+		self.grids = [item.get('absolute_url') for item in self.data.get('objects')]
+		for grid_item in self.grids:
+			print grid_item.rsplit('/', 2)[1]
 
 
-def process_grid(package_list):
-	'''
-	Function `process_grid` is responsible for representing the relevant list.
-	It gets the name of the grid and returns the packages within that grid. 
-	'''
-	url = 'https://www.djangopackages.com/api/v1/grid/' + package_list
-	response = requests.get(url)
-	data = simplejson.loads(response.content)
-	
-	print 'Here is the list of packages: '
-	for item in data.get('packages'):
-		print item.rsplit('/', 2)[1]
+	def process_grid(self, package_list):
+		'''
+		Function `process_grid` is responsible for representing the relevant list.
+		It gets the name of the grid and returns the packages within that grid. 
+		'''
+		self.url =  self._url + 'grid/' + package_list
+		self.response = requests.get(self.url)
+		self.data = simplejson.loads(self.response.content)
+		
+		print 'Here is the list of packages: '
+		for item in self.data.get('packages'):
+			print item.rsplit('/', 2)[1]
 
 
-def process_package(package):
-	'''
-	Function `process_package` gets the package name as the input and 
-	returns some useful information about the founded package.
-	'''
-	url = 'https://www.djangopackages.com/api/v1/package/' + package
-	response = requests.get(url)
-	data = simplejson.loads(response.content)
-	print 'Here is the detailed info about the package: '
-	print 'Name: \t\t\t', data.get('title')
-	print 'Description: \t\t', data.get('repo_description')
-	print 'PyPI URL: \t\t', data.get('pypi_url')
-	print 'Repository URL: \t', data.get('repo_url')
-	print 'Repository forks: \t', data.get('repo_forks')
-	print 'Repository watchers:\t', data.get('repo_watchers')
-	print 'Last modified: \t\t', data.get('modified')[:10]
+	def process_package(self, package):
+		'''
+		Function `process_package` gets the package name as the input and 
+		returns some useful information about the founded package.
+		'''
+		self.url = self._url + 'package/' + package
+		self.response = requests.get(self.url)
+		self.data = simplejson.loads(self.response.content)
+		print 'Here is the detailed info about the package: '
+		print 'Name: \t\t\t', self.data.get('title')
+		print 'Description: \t\t', self.data.get('repo_description')
+		print 'PyPI URL: \t\t', self.data.get('pypi_url')
+		print 'Repository URL: \t', self.data.get('repo_url')
+		print 'Repository forks: \t', self.data.get('repo_forks')
+		print 'Repository watchers:\t', self.data.get('repo_watchers')
+		print 'Last modified: \t\t', self.data.get('modified')[:10]
 
 
 
@@ -78,22 +85,23 @@ if __name__ == '__main__':
 	parser.add_option('-p', '--package', dest='package', help='getting the required information about the package')
 	options, args = parser.parse_args()
 	
+	DPS = DPS()
 	if options.grid:
 		try:
-			process_grid(options.grid)
+			DPS.process_grid(options.grid)
 		except:
 			print "Sorry! I can't find such a list"
 	
 	if options.package:
 		try:
-			process_package(options.package)
+			DPS.process_package(options.package)
 		except:
 			print "Sorry! I can't find this package.."
 	
 	
 	try:
 		if sys.argv[1] and sys.argv[1] == 'galaxy':
-			grid_list()
+			DPS.grid_list()
 	except:
 		print help_message
 
